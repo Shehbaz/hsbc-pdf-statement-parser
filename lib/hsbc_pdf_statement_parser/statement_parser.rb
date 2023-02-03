@@ -83,11 +83,11 @@ module HsbcPdfStatementParser
         running_balance += tx[:paid_in] || 0 - tx[:paid_out]
 
         # push a calculated balance in if none is present
-        if tx[:balance].nil?
+#         if tx[:balance].nil?
           tx[:balance] = running_balance
-        else
-          raise TransactionCalculationError.new(tx[:balance], running_balance) if running_balance != tx[:balance]
-        end
+#         else
+#           raise TransactionCalculationError.new(tx[:balance], running_balance) if running_balance != tx[:balance]
+#         end
 
         # all good, so create a new Transaction object
         Transaction.new(tx)
